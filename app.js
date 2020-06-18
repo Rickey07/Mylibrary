@@ -5,7 +5,6 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 80;
 const expressLayouts = require('express-ejs-layouts');
-const Router = require('./controllers/index');
 const mongoose = require('mongoose');
 
 mongoose.connect(process.env.DATABASE_URL , {useNewUrlParser: true , useUnifiedTopology: true})
@@ -23,8 +22,12 @@ app.set('layout' , 'layouts/layouts');
 app.use(expressLayouts);
 app.use(express.static('public'));
 
+const indexRouter = require('./controllers/index');
+const authorsRouter = require('./controllers/authors');
 
-app.use('/' , Router)
+
+app.use('/' , indexRouter);
+app.use('/authors' , authorsRouter);
 
 app.listen(port , () => {
     console.log(`Server started running on port${port}`);
