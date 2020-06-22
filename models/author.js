@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const authorSchema = new mongoose.Schema({
     name: {
         type:String,
-        required: true
+        required: true,
+        trim: true,
     }
 });
 
-
-exports = mongoose.model('Author', authorSchema)
+module.exports = mongoose.model('Author', authorSchema)

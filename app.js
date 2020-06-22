@@ -1,11 +1,11 @@
 const env = require('dotenv').config();
 
-
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 80;
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 mongoose.connect(process.env.DATABASE_URL , {useNewUrlParser: true , useUnifiedTopology: true})
 .then(done => {
@@ -21,6 +21,7 @@ app.set('views' , __dirname + '/views');
 app.set('layout' , 'layouts/layouts');
 app.use(expressLayouts);
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false}));
 
 const indexRouter = require('./controllers/index');
 const authorsRouter = require('./controllers/authors');
