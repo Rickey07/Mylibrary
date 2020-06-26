@@ -25,10 +25,12 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: false}));
 
 const indexRouter = require('./controllers/index');
 const authorsRouter = require('./controllers/authors');
+const bookRouter = require('./controllers/books')
 
 
 app.use('/' , indexRouter);
 app.use('/authors' , authorsRouter);
+app.use('/books' , bookRouter)
 
 app.listen(port , () => {
     console.log(`Server started running on port${port}`);
