@@ -7,5 +7,15 @@
         <li><a href="/authors/new">Add Author</a></li>
         <li><a href="/books">Books</a></li>
         <li><a href="/books/new">Add Book</a></li>
+        <% console.log(typeof locals.userName) %>
+        <% if(locals.userName === undefined) { %>
+            <li><a href="/user/login">Login</a></li> 
+       <%  } else { %>
+        <form action="/logout?_method=DELETE" method="POST">
+        <% console.log(locals.userName) %> 
+          <li><button type="submit">Log Out</button></li> 
+        </form>
+      <% } %> 
+        <li><a href="/user/Register">Register</a></li>
     </ul>
 </header>

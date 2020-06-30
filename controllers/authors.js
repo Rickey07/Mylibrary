@@ -6,6 +6,9 @@ const book = require('../models/book');
 
 // Authors routes
 router.get('/' , async (req , res) =>  {
+    if(req.user == undefined) {
+        req.user= [];
+    }
     let searchOptions = {};
     console.log(req.query);
     if(req.query.name != null && req.query.name !== '') {
@@ -15,7 +18,8 @@ router.get('/' , async (req , res) =>  {
         const authors = await Author.find(searchOptions);
         res.render('authors/index' , {
             authors: authors , 
-            searchOptions: req.query})
+            searchOptions: req.query,
+            userName: req.user})
 
     } catch {
         res.redirect('/');
@@ -24,7 +28,10 @@ router.get('/' , async (req , res) =>  {
 
 // New Author routes 
 router.get('/new' , ( req , res ) => {
-    res.render('authors/new' , { author: new Author() })
+    if(req.user == undefined) {
+        req.user = []
+    }
+    res.render('authors/new' , { author: new Author() , userName: req.user})
 })
 
 // For creating the authors 
@@ -45,12 +52,16 @@ router.post('/' , async ( req , res ) => {
 })
 
 router.get('/:id' , async (req ,res) => {
+    if(req.user == undefined) {
+        req.user = []
+    }
     try {
         const author = await Author.findById(req.params.id)
         const books = await book.find({author: author.id}).limit(6).exec();
         res.render('authors/show' , {
             author: author,
-            booksByAuthor: books
+            booksByAuthor: books,
+            userName: req.user
         })
     } catch {
         res.redirect('/')
@@ -58,12 +69,15 @@ router.get('/:id' , async (req ,res) => {
 });
 
 router.get('/:id/edit' , async (req ,res) => {
+    if(req.user == undefined) {
+        req.user = [];
+    }
     let author 
     try {
         author =  await Author.findById(req.params.id);
         // author.name = req.body.name;
         // await author.save();
-        res.render('authors/edit' , {author: author})
+        res.render('authors/edit' , {author: author , userName: req.user})
     } catch (err){
         res.redirect('/authors')
     }
