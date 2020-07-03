@@ -47,16 +47,19 @@ router.post('/' , async (req , res) => {
                    pageCount: req.body.pageCount,
                    description: req.body.description
                })
-        saveCover(book , req.body.cover)
+               if(req.body.cover) {
+                    saveCover(book , req.body.cover)
+               }
         
        try {
            const newBook = await book.save();
            console.log('Saved');
-           // res.redirect(`books/${newBook.id}`)
+           res.redirect(`books/${newBook.id}`)
            res.redirect('books');
            
-        } catch(err) { 
+        } catch(err) {
             renderNewPage(req ,res , book , true) 
+            console.log(err);
             console.log('Error while creating new book')
         }   
        
@@ -108,9 +111,6 @@ try {
     saveCover(book , req.body.cover)
   }
   await book.save()
-
-    
-
   console.log('Updated');
   res.redirect(`/books/${book.id}`);
 
@@ -173,7 +173,6 @@ async function renderFormPage( req ,res , book ,form , hasError = false) {
         }
 
        res.render(`books/${form}` , params)
-       console.log(path.join(book.coverImagePath));
     } catch (e){
         console.log(`Error creating ${e}`)
         // console.log(`Error while creating new books`)
@@ -181,8 +180,7 @@ async function renderFormPage( req ,res , book ,form , hasError = false) {
     }
 }
 
- async function saveCover(book , coverEncoded) {
-         try {
+  function saveCover(book , coverEncoded) {
             if ( coverEncoded == null) {
                 console.log('Yes')
               return  res.redirect('books');
@@ -191,15 +189,13 @@ async function renderFormPage( req ,res , book ,form , hasError = false) {
             const cover =  JSON.parse(coverEncoded);
             if(cover != null && imageMimeTypes.includes(cover.type)) {
             
-                book.coverImage = await new Buffer.from(cover.data , 'base64');
-                book.coverImageType = cover.type
+                book.coverImage = new Buffer.from(cover.data , 'base64');
+                book.coverImageType = cover.type;
             }
-         } catch (e) {
-             console.log(e);
-             
-         }
+         
         
    
 }
 
 module.exports = router;
+
