@@ -1,21 +1,27 @@
-<header>
-    <nav>
-        <a href="/"> My Library</a>
-    </nav>
-    <ul>
-        <li> <a href="/authors">Authors</a> </li>
-        <li><a href="/authors/new">Add Author</a></li>
-        <li><a href="/books">Books</a></li>
-        <li><a href="/books/new">Add Book</a></li>
+
+    <nav class="header-nav" id="shrinkMenu">
+      <ul>
+        <li class="logo"><a class="header-title" href="/"> My Library</a></li>
+        <li class="nav-link"> <a href="/authors">Authors</a> </li>
+        <li class="nav-link"><a href="/authors/new">Add Author</a></li>
+        <li class="nav-link"><a href="/books">Books</a></li>
+        <li class="nav-link"><a href="/books/new">Add Book</a></li>
         <% console.log(typeof locals.userName) %>
         <% if(locals.userName === undefined) { %>
-            <li><a href="/user/login">Login</a></li> 
+            <li class="nav-link"><a href="/user/login">Login</a></li> 
        <%  } else { %>
         <form action="/logout?_method=DELETE" method="POST">
         <% console.log(locals.userName) %> 
-          <li><button type="submit">Log Out</button></li> 
+          <li class="nav-link"><a href=""><button type="submit" class="btn-login btn-primary">Log Out</button></a></li> 
         </form>
       <% } %> 
-        <li><a href="/user/Register">Register</a></li>
+        <li class="nav-link"><a href="/user/Register">Register</a></li>
+        <li class="nav-btn"><a href="#"><i class="fas fa-bars"></i></a></li>
     </ul>
-</header>
+  </nav>
+
+  <script defer>
+    document.querySelector('.nav-btn').addEventListener('click' , () => {
+      document.querySelectorAll('.nav-link').forEach(navlink => navlink.classList.toggle("show"))
+    })
+  </script>

@@ -1,0 +1,31 @@
+.register-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: fit-content;
+    margin-top: .8rem;
+}
+
+.regForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.regForm button {
+    margin-bottom: 0.8rem;
+}
+
+.regForm input {
+    margin-bottom: 1rem;
+    width: 50%;
+    padding: .4rem .6rem;
+    border: 1px solid var(--color-btn-border);
+    border-radius: 0.8rem;
+}
+
+.labelMail {
+    margin-top: 0.8rem;
+}

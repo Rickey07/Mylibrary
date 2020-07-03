@@ -1,17 +1,43 @@
+<!-- <h2 class="page-header">Author</h2>
 <div class="container">
-    <img src="<%= book.coverImagePath %>" width="150" height="200"  alt="">
+    <img src="<%# book.coverImagePath %>" width="150" height="200"  alt="">
     <div class="cover">
         <figure class="Front">
-            <div><h2>Author: <%= book.author.name %></h2></div>
+            <div><h2>Author: <%# book.author.name %></h2></div>
         </figure>
         <figure class="Back">
-            <div>Publish Date: <%= book.publishDate.toDateString() %></div>
-            <div>Page Count: <%= book.pageCount %></div>
-            <div>Page Count: <%= book.description %></div>
+            <div>Publish Date: <%# book.publishDate.toDateString() %></div>
+            <div>Page Count: <%# book.pageCount %></div>
+            <div>Description: <%# book.description %></div>
         </figure>
+    </div>
+</div> -->
+<!-- <div class="form-row btn-row"> -->
+    <!-- <a href="/books/<%# book.id %>/edit" class="btn btn-primary">Edit</a>
+    <%#comment include('../partials/deleteform.ejs' , {url: `/books/${book.id}`})  %> 
+    <a href="/authors/<%# book.author.id %>" class="btn btn-primary ">View Author</a> -->
+<!-- </div> -->
+
+
+<div class="container-book">
+    <div class="book-flip">
+        <div class="cover-flip"> 
+            <img src="<%= book.coverImagePath %>" height="100%" width="100%" alt="">
+        </div>
+        <div class="details-flip">
+            <h2 class="book-flip-title"><%= book.title %></h2>
+            <div class="book-flip-additional-details">
+                <div><h3>Author: <%= book.author.name %></h3></div>
+                <div><h3>PublishDate: <%= book.publishDate.toDateString() %></h3></div>
+                <div><h3>PageCount: <%= book.pageCount %></h3></div>
+                <div class="book-flip-description"><h3>Description: </h3><%= book.description %></div>
+            </div>
+        </div>
     </div>
 </div>
 
-<a href="/books/<%= book.id %>/edit">Edit</a>
-<%- include('../partials/deleteform.ejs' , {url: `/books/${book.id}`})  %> 
-<a href="/authors/<%= book.author.id %>">View Author</a>
+<div class="form-row btn-row show-page-buttons"> 
+     <a href="/books/<%= book.id %>/edit" class="btn btn-primary">Edit</a>
+    <%- include('../partials/deleteform.ejs' , {url: `/books/${book.id}`})  %> 
+    <a href="/authors/<%= book.author.id %>" class="btn btn-primary " style="order: 1;">View Author</a> 
+ </div>

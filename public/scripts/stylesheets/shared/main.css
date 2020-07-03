@@ -1,0 +1,177 @@
+@import './variables.css';
+@import './fonts.css';
+@import './header.css';
+@import './buttons.css';
+@import './login-register.css';
+@import './form.css';
+@import './authors.css';
+@import './books.css';
+
+:root {
+    font-family: 'Concert One' , 'cursive';
+    font-size: 20px;
+}
+
+body {
+    background: linear-gradient(to right , var(--color-background-dark) , var(--color-background-light));
+    color: var(--color-text-light);
+}
+* , *::before , *::after {
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 3rem;
+}
+
+.inner-container {
+    margin: 0 2rem;
+}
+
+.page-header {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.alert-error {
+    padding: 20px;
+    background: hsl(var(--color-danger-hue) ,100% ,50%);
+    margin-bottom: 0.4rem;
+    border-radius: 1px solid black;
+
+}
+
+.closebtn {
+    margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+  }
+
+.welcome-greet {
+    padding: 20px;
+    background: hsl(120, 100% , 30%);
+    margin-bottom: 0.8rem;
+    margin-top: 0.8rem;
+    border-radius: 1px solid black;
+    /* color: #ffffff; */
+}
+
+/* Media Queries  */
+
+@media screen and (max-width: 475px) {
+    .page-header {
+        font-size: 1.5rem;
+        margin-bottom: .2rem;
+    }
+
+    .regForm input {
+        width: 60%;
+    }
+
+    .alert-error {
+        padding: 10px;
+        margin-top: .8rem;
+    }
+
+    .welcome-greet {
+        padding: 10px;
+        margin-top: .8rem;
+    }
+
+    .author-name {
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        padding: .1rem .4rem;
+        font-size: 1.1rem;
+    }
+
+    .btn-row {
+        flex-basis: 0;
+    }
+
+    .btn-row > * {
+        margin-left: .4rem;
+    }
+
+    .authorsHeading {
+        margin-top: .7rem;
+        margin-bottom: .7rem;
+    }
+
+    .form-item {
+        margin-left: .1rem;
+    }
+
+    .searchBooksBtn {
+        margin-bottom: .5rem;
+    }
+
+  
+
+}
+
+
+@media screen and (max-width:584px) {
+    .container-book {
+        left: 30%;
+    }
+
+    .show-page-buttons {
+        left: 29%;
+    }
+    
+}
+
+@media screen and (max-width:498px) {
+    .container-book {
+        left: 23%;
+    }
+
+    .show-page-buttons {
+        left: 21%;
+    }
+
+}
+
+@media screen and (max-width: 448px) {
+    .container-book {
+        left: 16%;
+    }
+
+    .show-page-buttons {
+        left: 16%;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    .container-book {
+        left: 10%;
+    }
+
+    .show-page-buttons {
+        left: 10%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .container-book {
+        left: 2%;
+    }
+
+    .show-page-buttons {
+        left: 2%;
+    }
+}

@@ -1,20 +1,27 @@
-<div>
-<h1>Register</h1>
+<div class="register-container">
+<h1 class="page-header">Register</h1>
 <% if (locals.errors) { %>
     <ul>
         <% Object.values(errors).forEach(function(error){ %>
-              <li><%= error.msg %></li>
+            <div class="alert-error">
+                <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span>
+              <li style="list-style: none;"> <%= error.msg %> </li> 
+            </div>
+           
         <% }); %>
     </ul>
     <% } %>
-<form action="/user/register"  method="POST">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" autocomplete="off">
+<form action="/user/register" autocomplete="off" class="regForm"  method="POST"> 
+    <label for="name" class="labelMail">Name</label>
+    <input type="text" name="name" id="name" autocomplete="off" placeholder="Enter Your Name">
+    
     <label for="email">Email</label>
-    <input type="email" name="email" id="email" autocomplete="off">
+    <input type="email" name="email" id="email" autocomplete="off" placeholder="Your Email">
+
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" autocomplete="off">
-    <button type="submit">Register</button>
+    <input type="password" name="password" id="password" autocomplete="off" placeholder="Your Password">
+
+    <button type="submit" class="btn-login btn-primary margin-b-5">Register</button>
 </form>
-<a href="/user/login">Already Have an account</a>
+<a href="/user/login" class="login-link">Already Have an account?</a>
 </div>

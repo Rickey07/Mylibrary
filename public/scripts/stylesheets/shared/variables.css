@@ -1,0 +1,17 @@
+:root {
+    --color-base-hue: 180;
+    --color-danger-hue-offset: 180;
+    --color-danger-hue: calc(var(--color-base-hue) - var(--color-danger-hue-offset)) ;
+    --color-btn-danger-background:hsl(var(--color-danger-hue) ,100% , 83%);
+    --color-btn-danger-text: black;
+    --color-background-dark: hsl(var(--color-base-hue) , 100% , 8%);
+    --color-background-light: hsl(var(--color-base-hue) , 100% , 16%);
+    --color-text-light: hsl(var(--color-base-hue) , 100% , 87%);
+    --color-text-light-dark:hsl(var(--color-base-hue) , 100% , 4%);
+    --color-btn-border:rgba(36, 23, 23 , 0.6);
+    --color-btn-primary-background: hsl(var(--color-base-hue) ,100% , 83%);
+    --color-btn-primary-text: hsl(var(--color-base-hue) , 100% , 20%);
+    --nav-title-font-size: 2.2rem;
+    --nav-title-font-weight: bold;
+    --nav-link-font-size: 1.1rem;
+}

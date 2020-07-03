@@ -1,4 +1,7 @@
 <% if (locals.errorMsg!=null) { %>
-    <%= errorMsg %>
+    <div class="alert-error">
+        <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span>
+        <%= errorMsg %>
+    </div>
 
 <%} %>

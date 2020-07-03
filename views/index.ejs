@@ -1,14 +1,10 @@
-<h2>Recently added</h2>
-<h4><% if(locals.userName) { %>
-    <%= locals.userName %>
+<h2 class="page-header">Recently added</h2>
+<h4><% if(locals.userName === undefined) { %>
 <% } else { %>
- <%= locals.userName  %> 
- <% } %> </h4>
-<% books.forEach(book => { %>
-    <div>
-        <a href="books/<%= book.id  %> ">
-    <img height="150" src="<%= book.coverImagePath %>" style="text-align: center;margin: 0 auto; display: block;" alt="">
-    <p style="text-align: center;"> <%= book.title %> </p>
-</a>
+    <div class="welcome-greet">
+        <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span>
+       <span> Welcome <%= locals.userName  %> ! </span> 
     </div>
-<% }) %>
+ <% } %> </h4>
+<%- include('./partials/bookgrid.ejs', { books: books , large: true}) %>
+

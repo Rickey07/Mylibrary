@@ -108,6 +108,9 @@ try {
     saveCover(book , req.body.cover)
   }
   await book.save()
+
+    
+
   console.log('Updated');
   res.redirect(`/books/${book.id}`);
 
@@ -163,35 +166,39 @@ async function renderFormPage( req ,res , book ,form , hasError = false) {
         }
         if(hasError) {
             if(form === 'edit') {
-                params.errorMessage = 'Error While Updating the Book Please Make sure To Enter All Fields'
+                params.errorMsg = 'Error While Updating the Book Please Make sure To Enter All Fields'
             } else {
-                params.errorMessage = 'Error Creating a Book Please Try Again Later'
+                params.errorMsg = 'Error Creating a Book Please Try Again Later'
             }
         }
 
-        if (hasError) {
-                params.errorMsg = `Error while creating a new book `
-        }
        res.render(`books/${form}` , params)
        console.log(path.join(book.coverImagePath));
-    } catch {
+    } catch (e){
+        console.log(`Error creating ${e}`)
         // console.log(`Error while creating new books`)
         // res.redirect('books')
     }
 }
 
- function saveCover(book , coverEncoded) {
-    
-        if (coverEncoded == null) {
-            console.log('Yes')
-          return  res.redirect('books');
+ async function saveCover(book , coverEncoded) {
+         try {
+            if ( coverEncoded == null) {
+                console.log('Yes')
+              return  res.redirect('books');
+            
+            } 
+            const cover =  JSON.parse(coverEncoded);
+            if(cover != null && imageMimeTypes.includes(cover.type)) {
+            
+                book.coverImage = await new Buffer.from(cover.data , 'base64');
+                book.coverImageType = cover.type
+            }
+         } catch (e) {
+             console.log(e);
+             
+         }
         
-        } 
-        const cover =  JSON.parse(coverEncoded);
-        if(cover != null && imageMimeTypes.includes(cover.type)) {
-            book.coverImage = new Buffer.from(cover.data , 'base64');
-            book.coverImageType = cover.type
-        }
    
 }
 

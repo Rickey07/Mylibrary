@@ -1,14 +1,23 @@
-<div class="container">
-    <h1>Login</h1>
+<div class="register-container">
+    <h1 class="page-header">Login</h1>
     <% if (locals.messages.error) { %>
-        <%= locals.messages.error  %> 
+        <div class="alert-error">
+            <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span>
+            <%= locals.messages.error %>
+        </div>
     <% } %>
 
-    <form action="/user/login"  method="POST">
-        <input type="Email" name="email" required>
-        <input type="password" name="password" required>
-        <button type="submit">Login</button>
+    <form action="/user/login" class="regForm"  method="POST">
+
+        <label for="email" class="labelMail">Email</label>
+        <input type="Email" name="email" id="email" required>
+  
+        
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+      
+        <button class="btn-login btn-primary" type="submit">Login</button>
         
     </form>
-    <a href="/user/register">Don't Have An Account? Register Now!</a>
+    <a href="/user/register" class="login-link">Don't Have An Account? Register Now!</a>
 </div>

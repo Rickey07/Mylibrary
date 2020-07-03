@@ -10,12 +10,20 @@
     <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
     <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
     <script defer src="/scripts/fileUpload.js"></script>
+    <link rel="stylesheet" id="main-css" href="/scripts/stylesheets/shared/main.css">
+    <script defer src="/scripts/nav.js"></script>
+    <script defer src="https://kit.fontawesome.com/a076d05399.js"></script>
+
     <title>MyLibrary</title>
 </head>
 <body>
-
     <%- include('../partials/header.ejs'); -%>
-    <%- include('../partials/errorMsg.ejs'); -%>
+    <div class="container">
+            <div class="inner-container"> 
+                <%- include('../partials/errorMsg.ejs'); -%>
+            </div>
     <%- body %>
+    </div>
+
 </body>
 </html>
