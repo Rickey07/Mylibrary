@@ -2,7 +2,6 @@ const env = require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 80;
 const expressLayouts = require('express-ejs-layouts');
 const methodOverride = require('method-override')
 const mongoose = require('mongoose');
@@ -69,5 +68,5 @@ function checkNotAuth (req ,res , next) {
 
 
 app.listen(process.env.PORT || 3000 , () => {
-    console.log(`Server started running on port${port}`);
+    console.log(`Server started running on port${process.env.PORT}`);
 })
