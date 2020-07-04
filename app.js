@@ -68,6 +68,6 @@ function checkNotAuth (req ,res , next) {
 }
 
 
-app.listen(port , () => {
+app.listen(process.env.PORT || 3000 , () => {
     console.log(`Server started running on port${port}`);
 })
