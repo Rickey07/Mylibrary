@@ -12,7 +12,7 @@ const passport = require('passport');
 
 
 
-mongoose.connect(process.env.DATABASE_URL , {useNewUrlParser: true , useUnifiedTopology: true})
+mongoose.connect(process.env.DATABASE_URL , {useNewUrlParser: true , useUnifiedTopology: true , useCreateIndex: true})
 .then(done => {
     console.log('MONGODB CONNECTED')
 })
