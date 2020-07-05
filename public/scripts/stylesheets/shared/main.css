@@ -98,9 +98,9 @@ body {
         font-size: 1.1rem;
     }
 
-    .btn-row {
+    /* .btn-row {
         flex-basis: 0;
-    }
+    } */
 
     .btn-row > * {
         margin-left: .4rem;
